@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#C45C5C">
+<meta name="description" content="水果塑形测试 · 你是什么水果人格。18 道原创题，六维味道轮廓匹配 12 种水果人格。测测日记娱乐向自我观察，非正式人格鉴定。">
+<meta property="og:title" content="水果塑形测试 · 你是什么水果人格">
+<meta property="og:description" content="测测日记 · 六维水果塑形 · 12 种水果人格。娱乐向，图一乐。">
+<meta property="og:url" content="https://zengpenghui420-glitch.github.io/fruit-fft/">
+<meta property="og:type" content="website">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="水果塑形测试">
+<link rel="canonical" href="https://zengpenghui420-glitch.github.io/fruit-fft/">
+<title>水果塑形测试 · 你是什么水果人格</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23C45C5C'/%3E%3Cpath d='M16 7c1.2 3 4 4.2 6.2 5.2C20.6 18 18 24 16 25.2 14 24 11.4 18 9.8 12.2 12 11.2 14.8 10 16 7z' fill='%23FBF6EE'/%3E%3Cpath d='M16 7c-.6 2.4-2.2 3.4-4.2 4 1.6.2 3 .8 4.2-1.2 1.2 2 2.6 1.4 4.2 1.2-2-.6-3.6-1.6-4.2-4z' fill='%236B8F71'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#FBF6EE;--card:#FFFDF8;--ink:#3A2E24;--muted:#8A7A6A;
+  --berry:#C45C5C;--citrus:#E0A84A;--leaf:#6B8F71;--peach:#E8B59A;--grape:#7A6B8A;
+  --cream:#F3E6D2;--line:#E8DCCA;
+  --berry-deep:#9C4545;--ink-soft:#5C4E42;
+  --sb:env(safe-area-inset-bottom,0px);--st:env(safe-area-inset-top,0px)
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:#E7D9C6;color-scheme:light}
+body{
+  max-width:430px;margin:0 auto;min-height:100dvh;color:var(--ink);line-height:1.65;
+  font-family:"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Noto Sans SC","WenQuanYi Micro Hei","Droid Sans Fallback","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(ellipse at 8% -8%, rgba(196,92,92,.20), transparent 46%),
+    radial-gradient(ellipse at 110% 0%, rgba(224,168,74,.28), transparent 42%),
+    radial-gradient(ellipse at 70% 110%, rgba(107,143,113,.14), transparent 46%),
+    linear-gradient(180deg,#FFFDF8 0%,#FBF6EE 46%,#F3E6D2 100%);
+  overflow-x:hidden;
+  box-shadow:0 0 0 1px rgba(58,46,36,.05)
+}
+body.lock{overflow:hidden}
+button,input{font-family:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--berry);outline-offset:2px}
+[hidden]{display:none !important}
+.screen{display:none}
+.screen.active{display:block}
+#start.active,#quiz.active,#loading.active{display:flex;flex-direction:column;min-height:100dvh}
+#loading.active{align-items:center;justify-content:center;text-align:center;padding:24px}
+#start{padding:calc(18px + var(--st)) 22px calc(28px + var(--sb))}
+.mark{width:168px;height:132px;margin:4px auto 6px}
+.mark svg{width:100%;height:auto;display:block}
+.eyebrow{font-size:12px;letter-spacing:.42em;color:var(--berry-deep);font-weight:700;text-align:center}
+h1{font-size:30px;line-height:1.25;font-weight:760;letter-spacing:.04em;margin:8px 0 0;text-align:center;color:var(--ink)}
+.rule{display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 6px;color:var(--citrus)}
+.rule:before,.rule:after{content:"";width:36px;height:1px;background:var(--line)}
+.rule i{width:7px;height:7px;border-radius:50%;background:var(--citrus);display:block}
+.sub{font-size:16px;color:var(--ink-soft);text-align:center;margin-bottom:12px}
+.light-note{margin:0 0 14px;padding:11px 12px;border-radius:16px;background:rgba(255,253,248,.92);border:1px solid var(--line);color:var(--ink-soft);font-size:13px;line-height:1.7}
+.dim-intro{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0 0 16px}
+.dim-intro li{display:flex;gap:10px;align-items:center;background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:16px;padding:8px 12px}
+.swatch{flex:0 0 28px;width:28px;height:28px;border-radius:9px;display:block}
+.swatch.s{background:linear-gradient(160deg,#E8B59A,#C45C5C)}
+.swatch.t{background:linear-gradient(160deg,#F3E6D2,#E0A84A)}
+.swatch.j{background:linear-gradient(160deg,#E0A84A,#C45C5C)}
+.swatch.r{background:linear-gradient(160deg,#F3E6D2,#7A6B8A)}
+.swatch.c{background:linear-gradient(160deg,#E8B59A,#6B8F71)}
+.swatch.d{background:linear-gradient(160deg,#6B8F71,#7A6B8A)}
+.dim-intro b{display:block;font-size:14px;line-height:1.3;font-weight:700}
+.dim-intro span{display:block;font-size:12px;color:var(--muted);line-height:1.45}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.pill{padding:5px 10px;border-radius:999px;background:rgba(255,253,248,.94);border:1px solid var(--line);color:var(--ink-soft);font-size:12px}
+.btn-primary{width:100%;padding:15px 16px;border:none;border-radius:28px;background:linear-gradient(180deg,#D16A6A 0%,#C45C5C 42%,#9C4545 100%);color:#FFFDF8;font-size:17px;font-weight:750;letter-spacing:.04em;box-shadow:0 10px 22px rgba(156,69,69,.28)}
+.btn-primary:active{transform:scale(.985)}
+.btn-primary:disabled{opacity:.62}
+.btn-ghost{width:100%;margin-top:10px;padding:13px 16px;border-radius:28px;border:1.5px solid #E2CDB8;background:rgba(255,253,248,.94);color:var(--ink-soft);font-size:15px;font-weight:650}
+.btn-ghost:active{transform:scale(.985)}
+.hint{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.65;text-align:center}
+.foot-label{margin:18px 0 8px;font-size:13px;font-weight:750;letter-spacing:.12em;color:var(--berry-deep)}
+.disclaimer{margin-top:0;padding:14px 14px 14px 16px;background:var(--cream);border:1px solid #E4D3BE;border-left:4px solid var(--berry);border-radius:14px;color:var(--ink);font-size:13.5px;line-height:1.75}
+.disclaimer strong{font-weight:750}
+.safety{margin:10px 0 4px;padding:14px 14px 14px 16px;background:#F7F3EA;border:1px solid #E0E6DA;border-left:4px solid var(--leaf);border-radius:14px;color:var(--ink);font-size:13.5px;line-height:1.75}
+.safety strong{font-weight:750}
+.shop-sign{margin-top:16px;text-align:center;font-size:12px;color:var(--muted);letter-spacing:.28em}
+.qh{padding:calc(12px + var(--st)) 18px 12px;background:rgba(251,246,238,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5;backdrop-filter:blur(10px)}
+.qrow{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.qback,.qprev{background:none;border:none;color:var(--muted);font-size:14px;padding:6px 0}
+.qprev{margin-right:auto;color:var(--berry-deep);font-weight:650}
+.qprog{font-size:13px;color:var(--berry-deep);font-weight:750;letter-spacing:.04em}
+.track{height:6px;background:#EFE4D4;border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--citrus),var(--berry));border-radius:99px;transition:width .35s ease}
+.qbody{padding:22px 20px calc(28px + var(--sb));flex:1}
+.qno{font-size:12px;letter-spacing:.18em;color:var(--leaf);font-weight:750;margin-bottom:8px}
+.qprompt{font-size:12.5px;color:var(--muted);line-height:1.65;margin:0 0 14px}
+.qtext{font-size:20px;font-weight:720;line-height:1.55;margin-bottom:18px;color:var(--ink)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:14px 14px;background:rgba(255,253,248,.96);border:1.5px solid var(--line);border-radius:16px;color:var(--ink);font-size:15.5px;box-shadow:0 3px 0 rgba(232,220,202,.95)}
+.opt .onum{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--cream);color:var(--berry-deep);font-size:13px;font-weight:750;display:flex;align-items:center;justify-content:center}
+.opt.sel,.opt:active{border-color:var(--berry);background:rgba(232,181,154,.28);color:var(--ink)}
+.opt.sel .onum{background:var(--berry);color:#FFFDF8}
+.loader{width:48px;height:48px;border-radius:50%;border:4px solid var(--citrus);border-right-color:transparent;border-bottom-color:var(--berry);animation:sp .9s linear infinite;margin:0 auto 16px;position:relative}
+.loader:after{content:"";position:absolute;inset:10px;border-radius:50%;border:2px solid rgba(255,253,248,.9)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.load-title{font-weight:750;color:var(--ink);font-size:17px}
+.load-sub{margin-top:6px;font-size:13px;color:var(--muted)}
+#result{padding-bottom:calc(168px + var(--sb))}
+.rtop{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:calc(12px + var(--st)) 16px 12px;background:rgba(251,246,238,.94);border-bottom:1px solid var(--line);font-size:14px;font-weight:750;backdrop-filter:blur(10px)}
+.rtop span:last-child{font-weight:600;color:var(--ink-soft);font-size:12.5px;text-align:right}
+.result-body{padding:16px 16px 8px}
+.card{position:relative;background:linear-gradient(180deg,rgba(255,253,248,.98),rgba(251,246,238,.92));border:1px solid var(--line);border-radius:22px;padding:18px 16px 16px;margin-bottom:12px;box-shadow:0 12px 28px rgba(58,46,36,.05)}
+.hero-head{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.kicker{font-size:12px;letter-spacing:.28em;color:var(--berry-deep);font-weight:750}
+.fruit-mark{width:76px;height:76px;flex:0 0 76px}
+.fruit-mark svg{width:100%;height:auto;display:block;filter:drop-shadow(0 6px 8px rgba(58,46,36,.08))}
+.fruit-mark.sm{width:48px;height:48px;flex-basis:48px}
+.type-title{font-size:32px;line-height:1.2;margin:4px 0 6px;letter-spacing:.04em;font-weight:760}
+.match-line{display:flex;align-items:baseline;gap:8px;margin:2px 0 8px}
+.match-line b{font-size:40px;line-height:1;color:var(--berry);font-weight:760;letter-spacing:-.03em}
+.match-line span{font-size:13px;color:var(--muted)}
+.punch{font-size:15.5px;line-height:1.7;color:var(--ink-soft)}
+.egg{margin-top:10px;padding:8px 10px;border-radius:12px;background:rgba(224,168,74,.18);color:#8A6230;font-size:13px;line-height:1.55}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{padding:4px 10px;border-radius:999px;background:rgba(196,92,92,.12);color:var(--berry-deep);font-size:12px;font-weight:700}
+.tag.leaf{background:rgba(107,143,113,.16);color:#3E6A4A}
+.tag.cit{background:rgba(224,168,74,.2);color:#8A6230}
+.note{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink-soft);line-height:1.7}
+.note i{display:block;font-style:normal;font-size:11px;letter-spacing:.16em;color:var(--leaf);font-weight:750;margin-bottom:3px}
+.runner{display:flex;gap:10px;align-items:center}
+.runner .who{font-size:12px;letter-spacing:.18em;color:var(--leaf);font-weight:750}
+.runner strong{display:block;font-size:18px;line-height:1.35;margin-top:2px}
+.runner p{font-size:13px;color:var(--muted);line-height:1.55}
+.st{font-size:16px;font-weight:760;letter-spacing:.08em;margin-bottom:8px}
+.st:before{content:"";display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:2px;background:var(--berry);transform:translateY(-1px) rotate(45deg)}
+.fine{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.65}
+.radar-box{margin:0 -6px}
+.radar-box svg{width:100%;height:auto;display:block}
+.score-grid{display:flex;flex-direction:column;gap:12px;margin-top:4px}
+.dim-read{padding-top:2px}
+.dim-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.dn{font-size:14px;font-weight:750}
+.ds{font-size:13px;font-weight:700;color:var(--berry-deep)}
+.ds em{font-style:normal;color:var(--muted);font-weight:600;margin-left:4px}
+.bar-track{height:8px;background:#EFE4D4;border-radius:99px;overflow:hidden;margin:5px 0 4px}
+.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--citrus),var(--berry));border-radius:99px}
+.dim-read p{font-size:13px;color:var(--muted);line-height:1.65}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
+.bullets li{position:relative;padding-left:16px;font-size:14.5px;line-height:1.7}
+.bullets li:before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--citrus)}
+.bullets.leaf li:before{background:var(--leaf)}
+.bullets.berry li:before{background:var(--berry)}
+#result .disclaimer,#result .safety{margin:0 0 12px}
+#result .foot-label{margin:4px 2px 8px}
+.acts{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;padding:8px 12px calc(10px + var(--sb));background:rgba(255,253,248,.96);border-top:1px solid var(--line);z-index:20;display:flex;flex-direction:column;gap:6px}
+.acts-note{font-size:11px;color:var(--muted);text-align:center;line-height:1.45}
+.acts-row{display:flex;gap:8px}
+.acts-row button{flex:1;padding:11px 4px;border-radius:22px;font-size:13px;font-weight:750}
+.bo{border:1.5px solid #E2CDB8;background:#FFFDF8;color:var(--ink-soft)}
+.bp{border:none;background:linear-gradient(180deg,#D16A6A,#9C4545);color:#FFFDF8}
+.ov{position:fixed;inset:0;background:rgba(58,46,36,.78);z-index:200;display:none;flex-direction:column;align-items:center;padding:16px 16px calc(16px + var(--sb));overflow-y:auto}
+.ov.show{display:flex}
+.ov img{width:min(100%,400px);border-radius:16px;background:var(--bg)}
+.ovh{color:#FFFDF8;font-size:14px;margin:8px 0 12px}
+.ovb{display:flex;gap:10px;width:100%;max-width:400px;margin-top:12px}
+.ovb button{flex:1;padding:12px;border:none;border-radius:22px;font-size:15px;font-weight:750}
+.ovb .save{background:#FFFDF8;color:var(--ink)}
+.ovb .shut{background:rgba(255,253,248,.16);color:#FFFDF8}
+.toast{position:fixed;top:calc(12px + var(--st));left:50%;transform:translateX(-50%);background:rgba(58,46,36,.92);color:#FFFDF8;padding:10px 16px;border-radius:20px;font-size:13px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;max-width:88%;text-align:center}
+.toast.show{opacity:1}
+.code-mask{position:fixed;inset:0;background:rgba(58,46,36,.46);z-index:150;display:none;align-items:center;justify-content:center;padding:20px}
+.code-mask.show{display:flex}
+.code-panel-wrap{position:relative;width:100%;max-width:360px}
+.code-panel{background:#FFFDF8;border:1.5px solid var(--line);border-radius:22px;padding:26px 18px 18px;box-shadow:0 18px 44px rgba(58,46,36,.18);text-align:center}
+.code-panel h3{font-size:18px;margin-bottom:4px}
+.code-kicker{font-size:12px;letter-spacing:.2em;color:var(--berry-deep);font-weight:700;margin-bottom:8px}
+.code-panel input{width:100%;padding:14px 12px;border:1.5px solid var(--line);border-radius:14px;font-size:18px;letter-spacing:.18em;text-align:center;color:var(--ink);background:var(--bg);outline:none}
+.code-panel input:focus{border-color:var(--berry);background:#fff}
+.code-panel input::placeholder{color:#C4B5A6;letter-spacing:.08em}
+.code-panel .btn-primary{margin-top:12px}
+.code-error{min-height:1.3em;margin-top:8px;color:var(--berry-deep);font-size:13px;line-height:1.5}
+.code-hint{margin-top:4px;font-size:12px;color:var(--muted);line-height:1.65}
+.code-close{position:absolute;top:8px;right:12px;background:none;border:none;font-size:22px;color:var(--muted);line-height:1;padding:4px}
+@media (prefers-reduced-motion:reduce){
+  .fill,.toast,.bar-fill{transition:none}
+  .loader{animation:none}
+}
+</style>
+</head>
+<body>
+<section id="start" class="screen active">
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 240 148">
+      <rect x="18" y="22" width="204" height="110" rx="28" fill="#FFFDF8" stroke="#E8DCCA"/>
+      <path d="M74 52c7-16 16-22 16-22s9 6 16 22c7 14 5 32-4 40-7 6-16 8-22 4-10-6-14-24-6-44z" fill="#C45C5C"/>
+      <path d="M90 30c-2 8-8 12-15 14 6 0 11-4 15-11 4 7 9 11 15 11-7-2-13-6-15-14z" fill="#6B8F71"/>
+      <circle cx="80" cy="66" r="1.7" fill="#FBF6EE"/><circle cx="92" cy="74" r="1.7" fill="#FBF6EE"/><circle cx="82" cy="82" r="1.5" fill="#FBF6EE"/><circle cx="98" cy="64" r="1.4" fill="#FBF6EE"/>
+      <circle cx="132" cy="78" r="24" fill="#E0A84A"/>
+      <circle cx="132" cy="78" r="15" fill="none" stroke="#FFFDF8" stroke-width="1.7"/>
+      <path d="M132 60v36M114 78h36M120 66l24 24M144 66L120 90" stroke="#FFFDF8" stroke-width="1.3"/>
+      <path d="M166 100a24 24 0 0 0 48 0" fill="none" stroke="#6B8F71" stroke-width="7" stroke-linecap="round"/>
+      <path d="M172 100a18 18 0 0 0 36 0z" fill="#C45C5C"/>
+      <path d="M178 100a12 12 0 0 0 24 0" fill="none" stroke="#E8B59A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="184" cy="92" r="1.4" fill="#3A2E24"/><circle cx="192" cy="88" r="1.4" fill="#3A2E24"/><circle cx="200" cy="93" r="1.3" fill="#3A2E24"/>
+    </svg>
+  </div>
+  <p class="eyebrow">测测日记</p>
+  <h1>水果塑形测试</h1>
+  <div class="rule" aria-hidden="true"><i></i></div>
+  <p class="sub">你是什么水果人格</p>
+  <p class="light-note">娱乐向，图一乐。非正式人格鉴定。用六种味道画出你近来待人处事的轮廓，再看它靠近哪一种水果——没有哪一种更高一等。</p>
+  <ul class="dim-intro">
+    <li><i class="swatch s"></i><div><b>甜度外显</b><span>你把好脸色、软语气递出去的速度</span></div></li>
+    <li><i class="swatch t"></i><div><b>清酸锋利</b><span>你把实话、棱角说出口的痛快程度</span></div></li>
+    <li><i class="swatch j"></i><div><b>汁感热情</b><span>情绪和活力往外挤出来的分量</span></div></li>
+    <li><i class="swatch r"></i><div><b>果皮厚度</b><span>别人要过几层才能碰到你更真实的一面</span></div></li>
+    <li><i class="swatch c"></i><div><b>成串社交</b><span>你是更习惯长在一串人里，还是单独挂枝</span></div></li>
+    <li><i class="swatch d"></i><div><b>后味层次</b><span>第一口简单，还是熟了才回甘、回味</span></div></li>
+  </ul>
+  <div class="pills"><span class="pill">18 道情景</span><span class="pill">六维塑形</span><span class="pill">12 种水果</span></div>
+  <button class="btn-primary" id="btnStart" type="button">开始测试</button>
+  <button class="btn-ghost" id="btnLast" type="button" hidden>查看上次结果</button>
+  <p class="hint">已有验证码可直接开始。请按你近来更常见的状态来选，第一反应即可。</p>
+  <footer class="site-foot">
+    <p class="foot-label">请先读这里</p>
+    <p class="disclaimer" id="startDisclaimer"></p>
+    <p class="safety" id="startSafety"></p>
+    <p class="shop-sign">测测日记</p>
+  </footer>
+</section>
+
+<section id="quiz" class="screen">
+  <div class="qh">
+    <div class="qrow">
+      <button class="qback" id="qback" type="button">退出</button>
+      <button class="qprev" id="qprev" type="button" hidden>上一题</button>
+      <span class="qprog" id="qprog"></span>
+    </div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="qbody">
+    <div class="qno" id="qno"></div>
+    <p class="qprompt" id="qprompt"></p>
+    <div class="qtext" id="qtext"></div>
+    <div class="opts" id="opts"></div>
+  </div>
+</section>
+
+<section id="loading" class="screen">
+  <div class="loader" aria-hidden="true"></div>
+  <div class="load-title">正在把六维味道对齐…</div>
+  <div class="load-sub">看看你靠近哪一种水果</div>
+</section>
+
+<section id="result" class="screen">
+  <div class="rtop"><span>水果塑形测试</span><span id="resultMeta"></span></div>
+  <div class="result-body" id="resultBody"></div>
+  <div class="acts">
+    <p class="acts-note">娱乐向自我观察 · 非正式人格鉴定 · 重新测试会再扣 1 次</p>
+    <div class="acts-row">
+      <button class="bo" id="btnViewLast" type="button">查看上次</button>
+      <button class="bo" id="btnCopy" type="button">复制文案</button>
+      <button class="bp" id="btnImg" type="button">生成卡片</button>
+    </div>
+    <div class="acts-row">
+      <button class="bp" id="btnRetry" type="button">重新测试</button>
+    </div>
+  </div>
+</section>
+
+<div class="code-mask" id="codeMask" aria-hidden="true">
+  <div class="code-panel-wrap">
+    <button class="code-close" id="codeClose" type="button" aria-label="关闭">×</button>
+    <div class="code-panel">
+      <p class="code-kicker">测测日记</p>
+      <h3>输入验证码</h3>
+      <input id="codeInput" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" placeholder="FF****" aria-label="验证码">
+      <p class="code-error" id="codeError" role="alert"></p>
+      <button class="btn-primary" id="btnCodeOk" type="button">开始答题</button>
+      <p class="code-hint">每码可测 3 次。重新测试会再扣 1 次；查看上次结果不扣次。</p>
+    </div>
+  </div>
+</div>
+
+<div class="ov" id="ov" aria-hidden="true">
+  <p class="ovh">长按图片保存，或点下方下载</p>
+  <img id="shareImg" alt="水果塑形分享卡片">
+  <div class="ovb">
+    <button class="save" id="btnDl" type="button">下载图片</button>
+    <button class="shut" id="btnClose" type="button">关闭</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:24px;text-align:center">请开启 JavaScript 后使用本测验。</p></noscript>
+<script>
+const API_BASE='https://snappy-tundra-7uesdvk.tmp.now';
+const QUIZ_KEY='fruit';
+const ACCESS_KEY='fruit_unlocked';
+const ACCESS_CODE_KEY='fruit_code';
+const LAST_KEY='fruit_last_result';
+const CODE_RE=/^FF[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{4}$/i;
+const PAGE_URL='https://zengpenghui420-glitch.github.io/fruit-fft/';
+const DISCLAIMER='本测试为娱乐向自我观察，非正式心理测量或人格鉴定，不能替代专业评估。「水果人格」只是用果味比喻你近来待人处事的气质，不是对任何人的品级排序，也没有哪一种水果更高一等；结果会受当下心情与作答状态影响，图一乐、拿去分享都好，别把它当成性格判决书。';
+const SAFETY_NOTE='味道会随季节变化。今天测出来偏酸或偏甜，只说明此刻的口感，不定义你整个人。若某个比喻让你不舒服，丢掉它就好，你比任何水果标签都立体。';
+const PROMPT_TEXT='请按你近来更常见的状态来选，第一反应即可。没有标准答案，也没有哪种水果更高一等。';
+const CHOICES=[
+  {v:1,t:'完全不像我'},
+  {v:2,t:'不太像'},
+  {v:3,t:'说不清'},
+  {v:4,t:'有点像'},
+  {v:5,t:'非常像我'}
+];
+const DIM_IDS=['S','T','J','R','C','D'];
+const DIM_META={
+  S:{name:'甜度外显',high:'你进门会先把好脸色放上桌，场面很容易被你捂热。',mid:'甜会给，但你会先看一眼对面，再决定给多少。',low:'你不急着对外发甜，更想先看清，再把好脸色递出去。'},
+  T:{name:'清酸锋利',high:'不对的事你会直接点破，宁可清爽，也不把棱角包成好听话。',mid:'你能把话说清楚，也会给场面留一口不那么酸的缓冲。',low:'你更圆融。心里觉得离谱，也很少当场让空气发酸。'},
+  J:{name:'汁感热情',high:'开心会从你这儿满出来，周围的人很快被你的温度带起来。',mid:'你有汁水，但不会一次泼满桌，热是一点点挤出来的。',low:'热情多半存在你自己这儿，很少一下子对外泼开。'},
+  R:{name:'果皮厚度',high:'壳比较厚。不熟的人要过好几层，才碰得到更真实的你。',mid:'你会先留一层皮。熟到某个点，真实面会自己露出来。',low:'你比较好接近，新朋友用不了太久就能摸到比较真的那一面。'},
+  C:{name:'成串社交',high:'固定饭局、群聊、互相报备让你安心，你习惯长在一串人里。',mid:'串里待得住，单独挂一会儿也行，两边你都过得去。',low:'你也能享受单独挂在枝头，不必融进一串才觉得完整。'},
+  D:{name:'后味层次',high:'很多人第一口觉得你简单，熟了才发现：原来后面还有味道。',mid:'第一面能读到主味，再相处一阵，还会冒出一点回甘。',low:'你是什么样，第一面基本就能被读得八九不离十。'}
+};
+const BAND={L:1,M:2,H:3};
+const QS=[
+  {id:'S1',dim:'S',text:'新认识的人面前，我会下意识把语气放软、把笑意先递出去，让场面先甜一点。'},
+  {id:'S2',dim:'S',text:'朋友心情不好时，我常先递上安慰和好东西，哪怕自己也有点累。'},
+  {id:'S3',dim:'S',text:'我不习惯一上来就对人又暖又甜，更想先看清再决定给多少好脸色。',rev:true},
+  {id:'T1',dim:'T',text:'觉得不对的事，我更想直接点破，而不是先用好听话把棱角包起来。'},
+  {id:'T2',dim:'T',text:'别人说我「说话清爽得像带点酸」，我基本认——宁可真实，也不假装什么都好。'},
+  {id:'T3',dim:'T',text:'即使心里觉得离谱，我也很少当场把话挑明，免得场面发酸。',rev:true},
+  {id:'J1',dim:'J',text:'开心或兴奋时，我很容易把情绪「挤」出来分享，周围人很快能感觉到我的温度。'},
+  {id:'J2',dim:'J',text:'聚会里如果气氛发干，我会忍不住去补水分：热场、接梗、把人带动起来。'},
+  {id:'J3',dim:'J',text:'我的热情多半存着，很少一下子对外泼得满桌都是。',rev:true},
+  {id:'R1',dim:'R',text:'不熟的人想走近我，通常要过好几层「还没准备好被看见」的壳。'},
+  {id:'R2',dim:'R',text:'被突然夸或突然靠近时，我会先愣一下、把距离拉回安全区，再决定要不要打开。'},
+  {id:'R3',dim:'R',text:'我比较好接近，新朋友用不了太久就能摸到我比较真实的一面。',rev:true},
+  {id:'C1',dim:'C',text:'我更习惯长在一串人里：有固定饭局、群聊、互相报备的小圈子才安心。'},
+  {id:'C2',dim:'C',text:'一个人待太久我会发干，想念和熟人挨在一起那种「成串」的感觉。'},
+  {id:'C3',dim:'C',text:'我也能享受单独挂在枝头，不一定非要融进一串才完整。',rev:true},
+  {id:'D1',dim:'D',text:'很多人觉得刚认识的我很简单，熟了才说「原来你后面还有味道」。'},
+  {id:'D2',dim:'D',text:'我不太愿意把真正在想的事第一口就交出去，更想让人慢慢回味到。'},
+  {id:'D3',dim:'D',text:'我是什么样的人，第一面基本就能被读得八九不离十。',rev:true}
+];
+const FRUITS=[
+  {id:'STRAW',name:'红颜草莓',pattern:'HLHLHM',punch:'你把甜先递出去，场面就先软下来',half:'先把甜递出去的那一个',
+    traits:['新场面里，你会先把笑意和软语气递出去，让空气先暖一截。','情绪比较好读：你蔫了，周围的人通常也看得到。','你喜欢和小圈子黏在一起，互相投喂、互相报备，那种踏实让你松一口气。','被冷待，或者被当成「反正你好说话」，你会明显不爽。','你讨喜，但不是无底线讨好。甜有额度，也有收的时候。'],
+    others:['别人容易觉得你好亲近、好开口，话会先往你这边递。','有人会下意识把情绪先交给你，好像你这里比较软、比较接得住。','熟悉你的人会把你的好脸色当成这桌的默认温度，有时忘了你也要被捂一捂。'],
+    advice:['甜是你的礼物，不是义务。今天不想甜，也可以只点一下头。','练习说一句「今天我也有点酸」，不必等蔫透了才被看见。','圈子很暖的时候，给自己留一颗不属于这串的时间。','被当成好说话时，把边界说软一点、说清楚一点，就够了。'],
+    tags:['先甜为敬','好靠近','成串生长'],
+    note:'你让房间先暖和起来——也记得给自己盖同一条毯子。'},
+  {id:'LEMON',name:'清冽柠檬',pattern:'LHMMLM',punch:'你不负责把世界调成甜的，你负责把它调醒',half:'负责把场面调醒',
+    traits:['觉得不对的事，你更想直接点破，而不是先包一层好听话。','你不擅长假装一切都好，假笑在你脸上待不久。','独立挂在枝头你也过得去，不必非挤进一串才安心。','你清爽，也容易被说「太酸」「太直」。','你的酸多半是为了把事情说清，不是为了把人推下桌。'],
+    others:['亲近的人靠你清醒，你一开口，场面就不那么糊了。','还生疏的人可能先被酸到，要过一会儿才尝到你的干净。','肯留下来的人，通常是因为你说的是真的。'],
+    advice:['锋利可以留。第一句可以再兑一点温水，意思不变，入口不同。','真实不等于要当场切开所有场面，有的话可以换一个更亮的时间说。','点破之前先看一眼：对方现在接不接得住这口酸。','你不必为了显得好相处，把柠檬汁兑成糖浆。'],
+    tags:['清醒剂','不装甜','独立挂枝'],
+    note:'世界需要柠檬，也需要你决定今天挤多少汁。'},
+  {id:'PEACH',name:'绒光蜜桃',pattern:'HLMLMH',punch:'第一口是绒，咬下去才知道你有核',half:'外绒，里面有核',
+    traits:['对外你温柔，也怕被碰重，语气常常先软下来。','看起来好捏，里面其实有核，原则不响，但在。','你熟得慢，真正的味道往往要相处一阵才交出来。','核被碰到时，你会明确收回来，不再继续好说话。','你愿意被轻轻拿着，不愿意被捏得变形。'],
+    others:['别人常常想护着你，也容易误判你没有边界。','隔着绒毛看，有人会以为你怎样都可以。','真正靠近的人会学会在外面停一下，再问能不能再近一点。'],
+    advice:['柔软不是请柬。别人觉得你好碰，不代表你必须被碰。','核要被看见，也要被尊重。你可以提前说哪里不能按。','被碰重了可以当时说，不必等事后脸颊发红才补一句。','你不必为了让人好轻拿，就把核藏到谁都碰不到。'],
+    tags:['外绒内核','慢熟','好轻拿'],
+    note:'绒毛是气质，不是许可证。'},
+  {id:'APPLE',name:'稳当苹果',pattern:'MMMMMM',punch:'你不是最出奇的那盘，却是别人最常伸手去拿的那一个',half:'别人最常伸手去拿的那一个',
+    traits:['你百搭、可靠，情绪不起猛浪，一桌人靠你垫着也不容易翻。','计划感和分寸感都在线，事情到你这儿比较不容易散。','偶尔会被当成「普通」，或者「你怎样都行」。','你让别人有东西可拿，自己却很少先说饿。','你的稳定是一种味道，不是没有味道。'],
+    others:['团队和朋友常默认你托得住，难事会先放到你面前。','你的好有时被当成背景板，亮的是别人。','有人把你放在最顺手的位置，很少问你想不想被拿起来。'],
+    advice:['稳当是优点，不是罚你永远当背景。','也允许自己有一季特别甜，或特别酸，不必季季一个味。','想被看见的时候，可以自己换到最上面一层。','别人说「你怎样都行」时，你也可以说今天怎样不行。'],
+    tags:['百搭主食','托得住','不起猛浪'],
+    note:'别人伸手就拿到你，是因为你一直都在——偶尔也可以把自己放在最显眼的那一层。'},
+  {id:'GRAPE',name:'成串青提',pattern:'MLMMHM',punch:'你是一颗，但你习惯长在一串里',half:'习惯长在一串里',
+    traits:['固定饭局、群聊、互相报备，会让你明显安心。','一个人待太久你会发干，想念和熟人挨在一起的感觉。','你会为了圈子调节自己的节奏，把步子对齐。','你记得别人最近的小事，也希望自己被这样记得。','串在一起的时候，你的甜度会上来；散开时，你会先找下一颗。'],
+    others:['你常常是把气氛串起来的那一颗。','你不在的时候，别人也会觉得这串少了一截。','圈子里的人会下意识等你出现，才觉得这桌算齐了。'],
+    advice:['合群是天赋，不是你必须一直在线的证据。','留一颗不属于这串的自己，哪怕一周只有一个下午。','圈子的情绪不等于你的情绪，群里的酸你不必全咽下去。','如果一个人会发干，可以只约一个，不必每次都叫齐整串。'],
+    tags:['成串生长','群聊养分','互相报备'],
+    note:'一串很甜，一颗也要完整。'},
+  {id:'MANGO',name:'热切芒果',pattern:'HMHLHM',punch:'浓、甜、化得开，靠近你像走进一整个夏天',half:'靠近像走进一整个夏天',
+    traits:['你热情、浓，也好接近，分享欲来得很快。','情绪化得开，人还没坐稳，夏天已经先到了。','有时浓到对方一时接不住，你已经把整盘端上来。','喜欢会说出来，而且不太藏得住。','你给出去的甜是热的，也希望对面慢慢热起来。'],
+    others:['靠近你，像被请吃很大的一口，味道先充满口腔。','被你喜欢，通常会很明显，不用猜。','有人会又开心，又不知道该从哪一口开始。'],
+    advice:['不是谁都有一次吃下整颗芒果的肚量，这不是对方小气。','浓可以分次给。今天一口，改天再一口，甜还在。','对方接得慢，不代表不珍惜，可能只是还在尝。','端上整盘之前，可以先问一句：你现在吃得下吗。'],
+    tags:['一口夏天','浓而化开','分享欲'],
+    note:'你的热情是真的——真的也可以慢慢递，不必一次端上整盘。'},
+  {id:'MELON',name:'冰镇西瓜',pattern:'MLHLHL',punch:'切开就分享，不藏私房味',half:'切开就分享',
+    traits:['你爽朗、大方，好东西更想切开，让一桌人都有。','你是气氛担当，不把味道藏成只有自己知道的私房。','你简单、直接，后味不太绕，别人不用解谜。','有你在，事情比较容易从「想聚」变成「已经在聚」。','你不喜欢把好意说成谜语，给了就是给了。'],
+    others:['有你在，局更容易发生，座位也会更快坐满。','有人会觉得你好懂，因而错过你更细的那一层。','熟的人知道你大方，有时会忘了问你想不想被分走。'],
+    advice:['你让夏天发生，这是很稀罕的本事。','也允许有人想吃慢一点、细一点，不必人人都大口。','简单不是浅。心里没那么简单的时候，可以主动说一句。','留下一小角只给你自己，完全正当，并不小气。'],
+    tags:['切开就分','气氛担当','不绕弯'],
+    note:'大块分享很慷慨——留下一小角只给你自己，也完全正当。'},
+  {id:'DRAGON',name:'外号火龙果',pattern:'LMHMLH',punch:'外壳先让人愣一下，剖开才是你自己的颜色',half:'剖开才是自己的颜色',
+    traits:['你不跟风讨好，别人都在点头时，你还可以是自己的形状。','存在感怪而亮，不吵，但很难被看成普通一颗。','外观会先让人愣一下，不知道该从哪下刀。','剖开是你自己的颜色，熟了以后层次比第一眼深。','你不太愿意为了好懂，把自己切成大家都见过的样子。'],
+    others:['有人先被外壳吸住，觉得新鲜，还没决定要不要吃。','有人要过一会儿才懂怎么吃你，刀法不对会觉得怪。','懂了的人通常不会再要求你长回「正常水果」的样子。'],
+    advice:['独特不用解释成锋利，也不必经营成一套人设。','给对的人一点切开的时间，急着被所有人看懂会累。','不是所有人都要成为你的观众，看不懂也可以只是路过。','想被理解，可以给一小口，不必把整颗剖开示众。'],
+    tags:['自己的颜色','不跟风','外表先说话'],
+    note:'你不是为了醒目而醒目——只是本来就长这样，这很好。'},
+  {id:'DURIAN',name:'带壳榴莲',pattern:'LHMHLH',punch:'不是谁都有通行证，有通行证的人会为你辩护',half:'有通行证的人才进得去',
+    traits:['你皮厚，有距离，观点也比较鲜明，不爱含糊过去。','爱和憎分得比较开，你很少对谁都维持同一种温度。','内核其实很丰富，但只给拿着通行证的人。','不懂的人会先被那股「气味」劝退，还没尝到里面。','你不是难相处，你是选择性相处。'],
+    others:['熟人对你的忠诚度很高，愿意在外面替你说话。','生人可能觉得难接近，或者觉得你「太冲」。','有通行证的人会为你辩护，而且辩得很认真。'],
+    advice:['壳是保护，不是诅咒。你可以厚，也可以在信任里薄一点。','给信任的人画一张「怎么敲这扇门」的小地图，省得他们乱砸。','不必为了让所有人喜欢，把壳削到一点不剩。','气味先到，不代表你要为此道歉。懂的人闻得到后面的甜。'],
+    tags:['通行证制','厚皮深核','爱憎分开'],
+    note:'不是人人都懂榴莲，懂的人往往很懂——这就够了。'},
+  {id:'COCO',name:'硬壳椰子',pattern:'LMLHLH',punch:'要费点功夫才能听到里面的水声',half:'要费点功夫才听得到水声',
+    traits:['你慢热，热情不对外泼，第一面常常是安静的。','别人要费点功夫，才听得到你里面的水声。','打开之后你清甜、稳定，不是一阵风过去就没了。','你不爱表演，也不靠把话说满来证明自己在场。','难开是壳的厚度，不是你心里没有水。'],
+    others:['第一面，别人常把你判成「冷」或「高冷」。','熟了以后才会发现，你其实清甜，也好相处。','愿意多敲两下的人，往往会留下来听那点水声。'],
+    advice:['难开不是冷漠。你只是需要正确的敲法，而不是更大的力气。','你可以主动给一把小锤：告诉对方，今天可以敲这里。','打开之后，也不必为了补偿沉默，把全部都交代光。','你也可以从里面自己敲一下，让一点点水声漏出去。'],
+    tags:['慢热硬壳','打开清甜','不爱表演'],
+    note:'有人愿意花功夫，是因为里面值得——你自己也可以偶尔从内部敲一敲。'},
+  {id:'BERRY',name:'夜色蓝莓',pattern:'LMLMLH',punch:'个头不大，一口下去才知道有多深',half:'一口下去才知道有多深',
+    traits:['你不张扬，人收着，后味却留得很长。','你适合小剂量的深聊，人一多，甜就散了。','甜藏在里面，你不负责照亮整张桌子。','你的好往往在第二口、第三口，不在进门那一下。','人少的时候，你的味道更完整。'],
+    others:['粗心的人会觉得你存在感弱，目光容易从你身上滑过去。','细的人会一颗一颗认真对待，而且记得你说过的那句。','你不抢话，但你说出口的常常留到散场以后。'],
+    advice:['小而密，也值得被认真对待。你不用先变成大颗。','偶尔把甜说出口，别人才能尝到，光靠后味他们可能错过。','深度不必换成音量。你不用为了被听见而变吵。','不想照亮整桌的时候，照亮一个人就很好。'],
+    tags:['小剂量深聊','后味长','不抢镜头'],
+    note:'不是每种好味道都要又大又响。你这样刚刚好。'},
+  {id:'PINE',name:'带刺凤梨',pattern:'MHHHMM',punch:'外皮先扎一下，里面是又热又甜的招待',half:'先扎一下，里面又热又甜',
+    traits:['你有热情，但门口留着刺，不是谁一伸手就能碰到果肉。','说话带一点刺，也带糖，两样常常一起来。','人来了你会招待，生人得先过那层刺。','你外冷内热：好客，却不随便把整盘摊开。','留下来的人会发现，你其实很舍得给甜。'],
+    others:['有人会先被扎到，还没尝到里面就缩回手。','留下的人会觉得你其实很好客，而且招待得认真。','被扎到还没走的人，多半是因为那口甜是真的。'],
+    advice:['刺可以留下，它让你站得住，不必为了好摘就先把自己削平。','招待之前可以先说一句「我只是看起来扎」，让对方知道不是赶人。','刺和甜都是你，不必只保留让人舒服的那一半。','想让人留下来，不用先把刺全部拔掉，说清怎么拿就好。'],
+    tags:['先扎后甜','好客设防','带刺招待'],
+    note:'带刺是为了完整地到达，不是为了把人推开。'}
+];
+
+let ans=[], qi=0, picking=false, codeBusy=false, current=null, order=[];
+
+function $(id){return document.getElementById(id)}
+function el(tag, cls, text){
+  const n=document.createElement(tag);
+  if(cls) n.className=cls;
+  if(text!=null) n.textContent=text;
+  return n;
+}
+function esc(s){return String(s).replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function show(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  $(id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='start') refreshStartBtn();
+}
+function toast(msg){
+  const t=$('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toast._tm);
+  toast._tm=setTimeout(function(){t.classList.remove('show')},2400);
+}
+function setCodeError(msg){$('codeError').textContent=msg||''}
+function itemScore(q,v){return q.rev?6-v:v}
+function to100(mean){return Math.round(Math.max(0,Math.min(100,((mean-1)/4)*100)))}
+function bandOf(score){
+  if(score<=33) return 'L';
+  if(score<=66) return 'M';
+  return 'H';
+}
+function bandLabel(score){
+  if(score<=33) return '偏低';
+  if(score<=66) return '中等';
+  return '偏高';
+}
+function dimRead(id,score){
+  const m=DIM_META[id];
+  if(score>=67) return m.high;
+  if(score<=33) return m.low;
+  return m.mid;
+}
+function shuffle(arr){
+  const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    const t=a[i];a[i]=a[j];a[j]=t;
+  }
+  return a;
+}
+function scoreFromAnswers(list){
+  if(!list || list.length!==QS.length) return null;
+  const buckets={S:[],T:[],J:[],R:[],C:[],D:[]};
+  for(let i=0;i<list.length;i++){
+    const v=list[i];
+    if(typeof v!=='number' || v<1 || v>5) return null;
+    const q=QS[order[i]];
+    buckets[q.dim].push(itemScore(q,v));
+  }
+  const scores={};
+  for(let d=0;d<DIM_IDS.length;d++){
+    const id=DIM_IDS[d];
+    const arr=buckets[id];
+    if(arr.length!==3) return null;
+    const mean=arr.reduce(function(s,x){return s+x},0)/arr.length;
+    scores[id]=to100(mean);
+  }
+  return scores;
+}
+function patternOf(scores){return DIM_IDS.map(function(id){return bandOf(scores[id])}).join('')}
+function manhattan(a,b){
+  let d=0;
+  for(let i=0;i<6;i++) d+=Math.abs(BAND[a[i]]-BAND[b[i]]);
+  return d;
+}
+function exactCount(a,b){
+  let n=0;
+  for(let i=0;i<6;i++) if(a[i]===b[i]) n++;
+  return n;
+}
+function matchFruits(scores){
+  const user=patternOf(scores);
+  const rows=FRUITS.map(function(f,index){
+    const dist=manhattan(user,f.pattern);
+    return {index:index,id:f.id,dist:dist,exact:exactCount(user,f.pattern),similarity:Math.max(0,Math.round((1-dist/12)*100))};
+  });
+  rows.sort(function(a,b){return a.dist-b.dist || b.exact-a.exact || a.index-b.index});
+  return {user:user,best:rows[0],runner:rows[1]};
+}
+function brewing(scores){return DIM_IDS.every(function(id){return scores[id]>=45 && scores[id]<=55})}
+function analyze(scores){
+  const m=matchFruits(scores);
+  const best=FRUITS[m.best.index];
+  const runner=FRUITS[m.runner.index];
+  return {
+    scores:scores,
+    pattern:m.user,
+    fruitId:best.id,
+    name:best.name,
+    punch:best.punch,
+    traits:best.traits,
+    others:best.others,
+    advice:best.advice,
+    tags:best.tags,
+    note:best.note,
+    half:best.half,
+    similarity:m.best.similarity,
+    runnerId:runner.id,
+    runnerName:runner.name,
+    runnerHalf:runner.half,
+    brewing:brewing(scores)
+  };
+}
+function fillMarked(node, text, marks){
+  node.textContent='';
+  const re=new RegExp('('+marks.map(function(m){return m.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|')+')');
+  text.split(re).forEach(function(part){
+    if(marks.indexOf(part)>=0) node.appendChild(el('strong',null,part));
+    else if(part) node.appendChild(document.createTextNode(part));
+  });
+}
+function fillDisclaimer(node){
+  fillMarked(node, DISCLAIMER, ['非正式心理测量或人格鉴定','不能替代专业评估','不是对任何人的品级排序','也没有哪一种水果更高一等','别把它当成性格判决书']);
+}
+function fillSafety(node){
+  fillMarked(node, SAFETY_NOTE, ['不定义你整个人','你比任何水果标签都立体']);
+}
+function fruitMark(id){
+  const wrap=function(inner){return '<svg viewBox="0 0 72 72" aria-hidden="true">'+inner+'</svg>'};
+  switch(id){
+    case 'STRAW':
+      return wrap('<path d="M36 14c2 7 10 11 16 14-3 16-10 30-16 32-6-2-13-16-16-32 6-3 14-7 16-14z" fill="#C45C5C"/><path d="M36 14c-1 6-5 8-10 10 4 0 7-2 10-7 3 5 6 7 10 7-5-2-9-4-10-10z" fill="#6B8F71"/><circle cx="30" cy="40" r="1.5" fill="#FBF6EE"/><circle cx="40" cy="44" r="1.5" fill="#FBF6EE"/><circle cx="33" cy="50" r="1.4" fill="#FBF6EE"/>');
+    case 'LEMON':
+      return wrap('<circle cx="36" cy="38" r="18" fill="#E0A84A"/><circle cx="36" cy="38" r="11" fill="none" stroke="#FFFDF8" stroke-width="1.6"/><path d="M36 24v28M22 38h28M26 28l20 20M46 28L26 48" stroke="#FFFDF8" stroke-width="1.3"/>');
+    case 'PEACH':
+      return wrap('<path d="M36 20c9 0 16 8 16 18s-7 18-16 18-16-8-16-18 7-18 16-18z" fill="#E8B59A"/><path d="M36 22c0 8-1 14 0 26" fill="none" stroke="#C45C5C" stroke-width="1.5" opacity=".75"/><path d="M36 20c3-7 10-9 14-6-5 1-9 3-14 6z" fill="#6B8F71"/>');
+    case 'APPLE':
+      return wrap('<path d="M36 24c9 1 16 8 16 17 0 11-7 19-16 19S20 52 20 41c0-9 7-16 16-17z" fill="#C45C5C"/><path d="M36 24c2-8 8-12 12-11" fill="none" stroke="#6B8F71" stroke-width="2" stroke-linecap="round"/><path d="M34 24c6-3 12 1 14 6" fill="#6B8F71"/>');
+    case 'GRAPE':
+      return wrap('<g fill="#7A6B8A"><circle cx="36" cy="26" r="6.5"/><circle cx="28" cy="36" r="6.5"/><circle cx="44" cy="36" r="6.5"/><circle cx="31" cy="47" r="6.5"/><circle cx="42" cy="47" r="6.5"/></g><path d="M36 16c2-5 8-7 11-5" fill="none" stroke="#6B8F71" stroke-width="2" stroke-linecap="round"/>');
+    case 'MANGO':
+      return wrap('<path d="M20 44c2-16 14-26 30-24 2 12-4 28-16 34C24 58 18 52 20 44z" fill="#E0A84A"/><path d="M30 24c6 3 11 9 13 16" fill="none" stroke="#F3E6D2" stroke-width="2.2" stroke-linecap="round"/>');
+    case 'MELON':
+      return wrap('<path d="M12 44c12-20 36-20 48 0" fill="#6B8F71"/><path d="M16 44c10-14 30-14 40 0" fill="#E8B59A"/><path d="M18 44c9-11 27-11 36 0" fill="#C45C5C"/><circle cx="30" cy="40" r="1.4" fill="#3A2E24"/><circle cx="38" cy="37" r="1.4" fill="#3A2E24"/><circle cx="46" cy="40" r="1.4" fill="#3A2E24"/>');
+    case 'DRAGON':
+      return wrap('<ellipse cx="36" cy="40" rx="16" ry="20" fill="#C45C5C"/><path d="M27 28c4 4 4 8 0 12s-4 8 0 14M36 24c4 5 4 9 0 14s-4 9 0 16M45 28c4 4 4 8 0 12s-4 8 0 14" fill="none" stroke="#6B8F71" stroke-width="1.5"/>');
+    case 'DURIAN':
+      return wrap('<circle cx="36" cy="40" r="16" fill="#6B8F71"/><path d="M36 20l3 8 8 1-6 5 2 8-7-5-7 5 2-8-6-5 8-1z" fill="#E0A84A"/>');
+    case 'COCO':
+      return wrap('<circle cx="36" cy="38" r="18" fill="#7A6B8A"/><circle cx="36" cy="38" r="10" fill="#F3E6D2"/><circle cx="32" cy="36" r="1.4" fill="#3A2E24"/><circle cx="40" cy="36" r="1.4" fill="#3A2E24"/><circle cx="36" cy="42" r="1.4" fill="#3A2E24"/>');
+    case 'BERRY':
+      return wrap('<circle cx="36" cy="40" r="14" fill="#7A6B8A"/><path d="M28 30c2-8 8-12 8-12s6 4 8 12" fill="#6B8F71"/><circle cx="31" cy="40" r="1.3" fill="#FBF6EE"/><circle cx="38" cy="36" r="1.3" fill="#FBF6EE"/><circle cx="41" cy="44" r="1.3" fill="#FBF6EE"/>');
+    case 'PINE':
+      return wrap('<ellipse cx="36" cy="40" rx="16" ry="18" fill="#E0A84A"/><path d="M36 16v8M22 30l7 4M50 30l-7 4M24 52l6-6M48 52l-6-6M36 56v-8" stroke="#6B8F71" stroke-width="2.2" stroke-linecap="round"/><ellipse cx="36" cy="40" rx="8" ry="10" fill="#C45C5C"/>');
+    default:
+      return wrap('<circle cx="36" cy="36" r="16" fill="#E8B59A"/>');
+  }
+}
+function radarSVG(r){
+  const dims=DIM_IDS.map(function(id){return {name:DIM_META[id].name, score:r.scores[id]}});
+  const cx=240, cy=250, R=86, n=dims.length;
+  const pt=function(i,v){
+    const a=-Math.PI/2+(i*2*Math.PI)/n;
+    const rr=Math.max(0,Math.min(100,v))/100*R;
+    return [cx+rr*Math.cos(a), cy+rr*Math.sin(a)];
+  };
+  let rings='', axes='', nums='';
+  [25,50,75,100].forEach(function(k){
+    const pts=[];
+    for(let i=0;i<n;i++) pts.push(pt(i,k).map(function(v){return v.toFixed(1)}).join(','));
+    const strong=k===50||k===100;
+    rings+='<polygon points="'+pts.join(' ')+'" fill="'+(k===100?'rgba(196,92,92,0.06)':'none')+'" stroke="'+(strong?'#E0CDB8':'#E8DCCA')+'" stroke-width="'+(strong?'1.6':'1')+'"/>';
+    const wedge=-Math.PI/3;
+    const sx=cx+(k/100)*R*Math.cos(wedge);
+    const sy=cy+(k/100)*R*Math.sin(wedge);
+    nums+='<text x="'+sx.toFixed(1)+'" y="'+sy.toFixed(1)+'" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#8A7A6A" stroke="#FBF6EE" stroke-width="3" paint-order="stroke">'+k+'</text>';
+  });
+  for(let i=0;i<n;i++){
+    const p=pt(i,100);
+    axes+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="#E8DCCA" stroke-width="1"/>';
+  }
+  const poly=dims.map(function(d,i){return pt(i,d.score).map(function(v){return v.toFixed(1)}).join(',')}).join(' ');
+  const dots=dims.map(function(d,i){
+    const p=pt(i,d.score);
+    return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="4.2" fill="#FFFDF8" stroke="#C45C5C" stroke-width="2"/>';
+  }).join('');
+  let labels='';
+  const halo=' stroke="#FBF6EE" stroke-width="4" paint-order="stroke"';
+  dims.forEach(function(d,i){
+    const a=-Math.PI/2+(i*2*Math.PI)/n;
+    const lr=R+48;
+    const x=cx+lr*Math.cos(a);
+    const y=cy+lr*Math.sin(a);
+    const anchor=Math.abs(Math.cos(a))<0.35?'middle':(Math.cos(a)>0?'start':'end');
+    labels+='<text x="'+x.toFixed(1)+'" y="'+(y-7).toFixed(1)+'" text-anchor="'+anchor+'" font-size="13" fill="#3A2E24"'+halo+'>'+esc(d.name)+'</text>';
+    labels+='<text x="'+x.toFixed(1)+'" y="'+(y+11).toFixed(1)+'" text-anchor="'+anchor+'" font-size="14" font-weight="700" fill="#9C4545"'+halo+'>'+d.score+'</text>';
+  });
+  const aria='水果塑形六维雷达，刻度 0 到 100。'+dims.map(function(d){return d.name+' '+d.score}).join('，');
+  return '<svg viewBox="0 0 480 500" role="img" aria-label="'+esc(aria)+'">'+
+    rings+axes+
+    '<polygon points="'+poly+'" fill="rgba(196,92,92,0.30)" stroke="#C45C5C" stroke-width="2.4" stroke-linejoin="round"/>'+
+    dots+nums+labels+'</svg>';
+}
+function bulletList(items, cls){
+  const ul=el('ul','bullets'+(cls?(' '+cls):''));
+  items.forEach(function(t){ul.appendChild(el('li',null,t))});
+  return ul;
+}
+function renderResult(r){
+  current=r;
+  const root=$('resultBody');
+  root.textContent='';
+  $('result').dataset.fruit=r.fruitId;
+  $('result').dataset.sim=String(r.similarity);
+  $('result').dataset.runner=r.runnerId;
+  $('resultMeta').textContent=r.name+' · 匹配度 '+r.similarity+'%';
+
+  const hero=el('section','card');
+  const head=el('div','hero-head');
+  const copy=el('div');
+  copy.appendChild(el('p','kicker','主导水果人格'));
+  const title=el('h2','type-title',r.name);
+  title.id='typeTitle';
+  copy.appendChild(title);
+  head.appendChild(copy);
+  const mark=el('div','fruit-mark');
+  mark.innerHTML=fruitMark(r.fruitId);
+  head.appendChild(mark);
+  hero.appendChild(head);
+  const match=el('div','match-line');
+  const num=el('b',null,r.similarity+'%');
+  num.id='matchNum';
+  match.appendChild(num);
+  match.appendChild(el('span',null,'匹配度 · 轮廓有多近，不是高低分'));
+  hero.appendChild(match);
+  hero.appendChild(el('p','punch',r.punch));
+  if(r.brewing){
+    const egg=el('p','egg','这季风味还在酿');
+    egg.id='eggLine';
+    hero.appendChild(egg);
+  }
+  const tags=el('div','tags');
+  r.tags.forEach(function(t,i){
+    tags.appendChild(el('span','tag'+(i===1?' leaf':(i===2?' cit':'')),t));
+  });
+  hero.appendChild(tags);
+  const note=el('p','note');
+  note.appendChild(el('i',null,'对现在的你'));
+  note.appendChild(document.createTextNode(r.note));
+  hero.appendChild(note);
+  root.appendChild(hero);
+
+  const run=el('section','card');
+  const row=el('div','runner');
+  const sm=el('div','fruit-mark sm');
+  sm.innerHTML=fruitMark(r.runnerId);
+  row.appendChild(sm);
+  const txt=el('div');
+  txt.appendChild(el('div','who','也有一点'));
+  const rn=el('strong',null,r.runnerName);
+  rn.id='runnerName';
+  txt.appendChild(rn);
+  txt.appendChild(el('p',null,r.runnerHalf));
+  row.appendChild(txt);
+  run.appendChild(row);
+  root.appendChild(run);
+
+  const radar=el('section','card');
+  radar.id='radarCard';
+  radar.appendChild(el('h2','st','水果塑形'));
+  const box=el('div','radar-box');
+  box.innerHTML=radarSVG(r);
+  radar.appendChild(box);
+  const grid=el('div','score-grid');
+  DIM_IDS.forEach(function(id){
+    const block=el('div','dim-read');
+    const h=el('div','dim-head');
+    h.appendChild(el('span','dn',DIM_META[id].name));
+    const ds=el('span','ds');
+    ds.appendChild(document.createTextNode(String(r.scores[id])));
+    ds.appendChild(el('em',null,bandLabel(r.scores[id])));
+    h.appendChild(ds);
+    block.appendChild(h);
+    const track=el('div','bar-track');
+    const fill=el('div','bar-fill');
+    fill.style.width=r.scores[id]+'%';
+    track.appendChild(fill);
+    block.appendChild(track);
+    block.appendChild(el('p',null,dimRead(id,r.scores[id])));
+    grid.appendChild(block);
+  });
+  radar.appendChild(grid);
+  radar.appendChild(el('p','fine','外圈是 100。靠近外圈，只说明这一维近来更明显。偏高、中等、偏低都是味道，不是品级。'));
+  root.appendChild(radar);
+
+  const feat=el('section','card');
+  feat.appendChild(el('h2','st','你这份塑形'));
+  feat.appendChild(bulletList(r.traits,'berry'));
+  root.appendChild(feat);
+
+  const oth=el('section','card');
+  oth.appendChild(el('h2','st','别人靠近你时'));
+  oth.appendChild(bulletList(r.others,'leaf'));
+  root.appendChild(oth);
+
+  const adv=el('section','card');
+  adv.appendChild(el('h2','st','相处 / 自处小建议'));
+  adv.appendChild(bulletList(r.advice,''));
+  root.appendChild(adv);
+
+  root.appendChild(el('p','foot-label','请先读这里'));
+  const disc=el('p','disclaimer');
+  fillDisclaimer(disc);
+  root.appendChild(disc);
+  const safe=el('p','safety');
+  fillSafety(safe);
+  root.appendChild(safe);
+  root.appendChild(el('p','shop-sign','测测日记'));
+}
+function resultText(r){
+  const lines=[
+    '我是「'+r.name+'」· 水果塑形匹配度 '+r.similarity+'%｜'+r.punch+'。你是什么水果人格？'
+  ];
+  if(r.brewing) lines.push('这季风味还在酿');
+  lines.push('也有一点「'+r.runnerName+'」· '+r.runnerHalf);
+  lines.push('水果塑形：'+DIM_IDS.map(function(id){return DIM_META[id].name+' '+r.scores[id]}).join(' / '));
+  lines.push('测测日记 · '+PAGE_URL);
+  return lines.join('\n');
+}
+function copyText(){
+  if(!current) return;
+  const text=resultText(current);
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){toast('已复制结果文案')}).catch(function(){fallbackCopy(text)});
+  }else fallbackCopy(text);
+}
+function fallbackCopy(text){
+  const ta=document.createElement('textarea');
+  ta.value=text;
+  document.body.appendChild(ta);
+  ta.select();
+  try{document.execCommand('copy');toast('已复制结果文案')}catch(e){toast('复制失败，请长按文字手动复制')}
+  document.body.removeChild(ta);
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+function wrapT(ctx,text,maxW){
+  const lines=[];
+  let line='';
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(ctx.measureText(line+ch).width>maxW && line){lines.push(line);line=ch}
+    else line+=ch;
+  }
+  if(line) lines.push(line);
+  return lines;
+}
+function buildShare(r){
+  const W=750,H=1180;
+  const c=document.createElement('canvas');
+  c.width=W;c.height=H;
+  const x=c.getContext('2d');
+  const FONT='"WenQuanYi Micro Hei","PingFang SC","Noto Sans SC",sans-serif';
+  x.fillStyle='#FBF6EE';
+  x.fillRect(0,0,W,H);
+  x.fillStyle='#C45C5C';
+  x.fillRect(0,0,W,16);
+  x.fillStyle='#E0A84A';
+  x.fillRect(0,16,W,8);
+  function T(t,tx,ty,s,col,wt){
+    x.fillStyle=col;
+    x.font=(wt||'600')+' '+s+'px '+FONT;
+    x.fillText(t,tx,ty);
+  }
+  x.textAlign='left';
+  T('测测日记  ·  水果塑形测试',56,86,22,'#9C4545','700');
+  T(r.name,56,168,64,'#3A2E24','700');
+  T('匹配度 '+r.similarity+'%',56,230,32,'#C45C5C','700');
+  x.font='500 28px '+FONT;
+  const punchLines=wrapT(x,r.punch,620);
+  let y=290;
+  punchLines.forEach(function(line){T(line,56,y,28,'#5C4E42','500');y+=42});
+  if(r.brewing){T('这季风味还在酿',56,y+8,24,'#8A6230','600');y+=48}
+  y+=20;
+  roundRect(x,48,y,654,86,20);
+  x.fillStyle='#FFFDF8';
+  x.fill();
+  x.strokeStyle='#E8DCCA';
+  x.stroke();
+  T('也有一点',72,y+36,18,'#6B8F71','700');
+  T(r.runnerName+'  ·  '+r.runnerHalf,72,y+68,24,'#3A2E24','600');
+  y+=120;
+  DIM_IDS.forEach(function(id){
+    T(DIM_META[id].name,56,y,22,'#3A2E24','700');
+    T(String(r.scores[id])+'  '+bandLabel(r.scores[id]),560,y,22,'#9C4545','700');
+    roundRect(x,56,y+14,638,12,6);
+    x.fillStyle='#EFE4D4';
+    x.fill();
+    const w=Math.max(8,638*(r.scores[id]/100));
+    roundRect(x,56,y+14,w,12,6);
+    x.fillStyle='#C45C5C';
+    x.fill();
+    y+=62;
+  });
+  y+=8;
+  let tx=56;
+  r.tags.forEach(function(tag){
+    x.font='700 22px '+FONT;
+    const tw=x.measureText(tag).width+36;
+    roundRect(x,tx,y,tw,42,21);
+    x.fillStyle='rgba(196,92,92,0.12)';
+    x.fill();
+    T(tag,tx+18,y+28,22,'#9C4545','700');
+    tx+=tw+12;
+  });
+  y+=90;
+  x.font='500 22px '+FONT;
+  wrapT(x,'娱乐向自我观察，不是性格判决书。味道只说明此刻。',640).forEach(function(line){
+    T(line,56,y,22,'#8A7A6A','500');
+    y+=34;
+  });
+  T('zengpenghui420-glitch.github.io/fruit-fft',56,H-56,20,'#8A7A6A','500');
+  return c.toDataURL('image/png');
+}
+function showShare(){
+  if(!current) return;
+  $('toast').classList.remove('show');
+  try{
+    const url=buildShare(current);
+    window.__shareUrl=url;
+    $('shareImg').src=url;
+    $('ov').classList.add('show');
+    $('ov').setAttribute('aria-hidden','false');
+  }catch(e){
+    toast('生成卡片失败，可以先截图');
+  }
+}
+function renderQ(){
+  const total=QS.length;
+  const q=QS[order[qi]];
+  $('qprog').textContent=(qi+1)+' / '+total;
+  $('fill').style.width=(((qi+1)/total)*100)+'%';
+  $('qprev').hidden=qi<=0;
+  $('qno').textContent='第 '+(qi+1)+' 题 · '+DIM_META[q.dim].name;
+  $('qprompt').textContent=PROMPT_TEXT;
+  const qt=$('qtext');
+  qt.textContent=q.text;
+  qt.dataset.qid=q.id;
+  const box=$('opts');
+  box.textContent='';
+  CHOICES.forEach(function(c){
+    const b=el('button','opt');
+    b.type='button';
+    b.dataset.v=String(c.v);
+    b.appendChild(el('span','onum',String(c.v)));
+    b.appendChild(document.createTextNode(c.t));
+    if(ans[qi]===c.v) b.classList.add('sel');
+    b.onclick=function(){pick(c.v)};
+    box.appendChild(b);
+  });
+}
+function advance(){
+  if(qi<QS.length-1){qi++;picking=false;renderQ()}
+  else {picking=false;finish()}
+}
+function pick(v){
+  if(picking) return;
+  picking=true;
+  ans[qi]=v;
+  renderQ();
+  setTimeout(advance,180);
+}
+function finish(){
+  const scores=scoreFromAnswers(ans);
+  if(!scores){
+    toast('这轮还没答完');
+    show('quiz');
+    return;
+  }
+  show('loading');
+  setTimeout(function(){
+    const report=analyze(scores);
+    try{
+      const saved={
+        S:report.scores.S,T:report.scores.T,J:report.scores.J,
+        R:report.scores.R,C:report.scores.C,D:report.scores.D,
+        fruitId:report.fruitId,name:report.name,similarity:report.similarity,
+        at:Date.now()
+      };
+      localStorage.setItem(LAST_KEY, JSON.stringify(saved));
+    }catch(e){}
+    refreshLastBtn();
+    renderResult(report);
+    show('result');
+  },780);
+}
+function isUnlocked(){try{return sessionStorage.getItem(ACCESS_KEY)==='1'}catch(e){return false}}
+function setUnlocked(code){
+  try{
+    sessionStorage.setItem(ACCESS_KEY,'1');
+    if(code) sessionStorage.setItem(ACCESS_CODE_KEY,code);
+  }catch(e){}
+}
+function clearUnlock(){
+  try{
+    sessionStorage.removeItem(ACCESS_KEY);
+    sessionStorage.removeItem(ACCESS_CODE_KEY);
+  }catch(e){}
+}
+function normalizeCode(v){
+  return String(v||'')
+    .trim()
+    .replace(/[\uFF21-\uFF3A]/g, function(ch){return String.fromCharCode(ch.charCodeAt(0)-0xFF21+65)})
+    .replace(/[\uFF41-\uFF5A]/g, function(ch){return String.fromCharCode(ch.charCodeAt(0)-0xFF41+97)})
+    .replace(/[\uFF10-\uFF19]/g, function(ch){return String.fromCharCode(ch.charCodeAt(0)-0xFF10+48)})
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g,'');
+}
+function openCodeModal(prefill){
+  $('codeMask').classList.add('show');
+  $('codeMask').setAttribute('aria-hidden','false');
+  document.body.classList.add('lock');
+  setCodeError('');
+  const inp=$('codeInput');
+  if(prefill!=null) inp.value=prefill;
+  setTimeout(function(){inp.focus()},40);
+}
+function closeCodeModal(){
+  $('codeMask').classList.remove('show');
+  $('codeMask').setAttribute('aria-hidden','true');
+  document.body.classList.remove('lock');
+  setCodeError('');
+  refreshStartBtn();
+}
+function startQuiz(){
+  if(!isUnlocked()){openCodeModal(null);return}
+  ans=[];qi=0;picking=false;
+  order=shuffle(QS.map(function(_,i){return i}));
+  closeCodeModal();
+  show('quiz');
+  renderQ();
+}
+function setCodeBusy(busy){
+  const btn=$('btnCodeOk');
+  btn.disabled=!!busy;
+  btn.textContent=busy?'验证中…':'开始答题';
+}
+function refreshLastBtn(){
+  let has=false;
+  try{has=!!localStorage.getItem(LAST_KEY)}catch(e){}
+  $('btnLast').hidden=!has;
+}
+function refreshStartBtn(){
+  const btn=$('btnStart');
+  if(!btn) return;
+  btn.textContent=isUnlocked()?'已有码，直接进入':'开始测试';
+}
+function clampScore(n){
+  n=Number(n);
+  if(!Number.isFinite(n)) return null;
+  return Math.max(0, Math.min(100, Math.round(n)));
+}
+function showLast(){
+  let data=null;
+  try{data=JSON.parse(localStorage.getItem(LAST_KEY)||'null')}catch(e){data=null}
+  if(!data){toast('还没有上次结果');refreshLastBtn();return}
+  const scores={};
+  for(let i=0;i<DIM_IDS.length;i++){
+    const id=DIM_IDS[i];
+    const v=clampScore(data[id]);
+    if(v==null){toast('还没有上次结果');refreshLastBtn();return}
+    scores[id]=v;
+  }
+  renderResult(analyze(scores));
+  show('result');
+  toast('已打开上次结果，本次不扣次');
+}
+async function apiFetch(url, opts){
+  const ctl=new AbortController();
+  const timer=setTimeout(function(){ctl.abort()},12000);
+  try{return await fetch(url, Object.assign({}, opts, {signal:ctl.signal}))}
+  finally{clearTimeout(timer)}
+}
+async function redeemVault(code){
+  const r=await apiFetch(API_BASE+'/redeem',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({quiz:QUIZ_KEY, code:code})
+  });
+  let data=null;
+  try{data=await r.json()}catch(e){
+    if(r.status===404) return {ok:false,reason:'invalid'};
+    throw new Error('net');
+  }
+  if(!data || !data.ok){
+    if(data && data.error==='exhausted') return {ok:false,reason:'exhausted'};
+    if(r.status===404 || (data && (data.error==='not_found' || data.error==='invalid'))) return {ok:false,reason:'invalid'};
+    return {ok:false,reason:(data && data.error) || 'net'};
+  }
+  return {ok:true, remaining:data.remaining, max:data.max||3};
+}
+function friendlyReason(reason){
+  if(reason==='exhausted') return '这个验证码已经用完了（每个码可以测 3 次）';
+  if(reason==='invalid' || reason==='not_found') return '没有找到这个验证码，请再核对一下';
+  return '网络有点不稳定，请稍后再试';
+}
+async function tryUnlock(fromUrl){
+  if(codeBusy) return false;
+  const code=normalizeCode($('codeInput').value);
+  $('codeInput').value=code;
+  if(!code){
+    if(!fromUrl){const msg='请先填写验证码';setCodeError(msg);toast(msg)}
+    return false;
+  }
+  if(!CODE_RE.test(code)){
+    const msg='验证码格式不太对，应为 FF 开头再加 4 位';
+    setCodeError(msg);
+    toast(msg);
+    return false;
+  }
+  codeBusy=true;
+  setCodeBusy(true);
+  setCodeError('');
+  try{
+    const out=await redeemVault(code);
+    if(out.ok){
+      setUnlocked(code);
+      const left=out.remaining;
+      toast(typeof left==='number' ? (left>0 ? ('验证成功，还可以测 '+left+' 次') : '验证成功，这是本码最后一次') : '验证成功');
+      startQuiz();
+      return true;
+    }
+    const msg=friendlyReason(out.reason);
+    setCodeError(msg);
+    toast(msg);
+    return false;
+  }catch(e){
+    const msg='网络有点不稳定，请稍后再试';
+    setCodeError(msg);
+    toast(msg);
+    return false;
+  }finally{
+    codeBusy=false;
+    setCodeBusy(false);
+  }
+}
+
+$('btnStart').onclick=function(){if(isUnlocked()){startQuiz();return} openCodeModal(null)};
+$('btnLast').onclick=function(){showLast()};
+$('btnViewLast').onclick=function(){showLast()};
+$('btnCodeOk').onclick=function(){tryUnlock(false)};
+$('codeInput').addEventListener('keydown',function(e){if(e.key==='Enter') tryUnlock(false)});
+$('codeInput').addEventListener('input',function(){
+  setCodeError('');
+  const input=$('codeInput');
+  const v=input.value.toUpperCase();
+  if(v!==input.value){
+    const p=input.selectionStart;
+    input.value=v;
+    try{input.setSelectionRange(p,p)}catch(err){}
+  }
+});
+$('codeClose').onclick=closeCodeModal;
+$('codeMask').addEventListener('click',function(e){if(e.target===$('codeMask')) closeCodeModal()});
+$('qback').onclick=function(){if(picking) return; show('start')};
+$('qprev').onclick=function(){
+  if(picking||qi<=0) return;
+  qi--;
+  renderQ();
+};
+$('btnRetry').onclick=function(){
+  let pre='';
+  try{pre=sessionStorage.getItem(ACCESS_CODE_KEY)||''}catch(e){}
+  clearUnlock();
+  show('start');
+  openCodeModal(pre);
+};
+$('btnCopy').onclick=copyText;
+$('btnImg').onclick=showShare;
+$('btnClose').onclick=function(){$('ov').classList.remove('show');$('ov').setAttribute('aria-hidden','true')};
+$('btnDl').onclick=function(){
+  if(!window.__shareUrl) return;
+  const a=document.createElement('a');
+  a.href=window.__shareUrl;
+  a.download='fruit-fft.png';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+};
+
+fillDisclaimer($('startDisclaimer'));
+fillSafety($('startSafety'));
+refreshLastBtn();
+refreshStartBtn();
+(function bootFromUrl(){
+  try{
+    const u=new URL(location.href);
+    const c=normalizeCode(u.searchParams.get('code')||'');
+    if(c && CODE_RE.test(c) && !isUnlocked()){
+      openCodeModal(c);
+      tryUnlock(true);
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
