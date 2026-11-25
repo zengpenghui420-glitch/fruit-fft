@@ -17,10 +17,11 @@ https://zengpenghui420-glitch.github.io/fruit-fft/
 | 计分 | 每维 3 题，其中 1 题反向（`6−v`）；维分 `(mean−1)/4×100`。档位 0–33 低、34–66 中、67–100 高，只用于匹配 |
 | 结果 | 主导水果人格 + 匹配度% + 次近水果 + 名为「水果塑形」的六维雷达 + 特征 / 他人视角 / 相处建议 |
 | 类型 | 12 种原创水果人格，按六维 L/M/H 向量的曼哈顿距离匹配。水果没有高低贵贱 |
-| 验证码 | `FF` + 4 位，字符表 `ABCDEFGHJKMNPQRSTUVWXYZ23456789`；每码 3 次 |
-| 接口 | `https://snappy-tundra-7uesdvk.tmp.now` ，`POST /redeem`，JSON `{quiz:"fruit", code}`；**不接 Mantle** |
-| 重新测试 | 清除会话解锁 → 再弹码 → redeem（扣 1 次） |
-| 查看上次 | 只读本机 `fruit_last_result`，不请求 redeem、不扣次 |
+| 解锁 | 小红书订单号。到「我的订单」复制后贴上，一单本测最多 3 次。开始新一次答题扣 1 次；同一次里中途刷新、继续、结果刷新不扣；再测才再扣；第 4 次拒绝并留在结果页 |
+| 订单接口 | `https://snappy-tundra-7uesdvk-zengpenghui420-glitch.vercel.app`（无尾斜杠）。`POST /order/redeem`，JSON `{quiz:"fruit", orderId}` 扣次；`GET /order/get?quiz=fruit&orderId=` 只读。超时先 peek，次数没有增加才再提交一次。页面不写付款核验 |
+| 旧验证码 | 页面不展示、不宣传。已发出的码仍走本仓原路径：`POST https://snappy-tundra-7uesdvk.tmp.now/redeem`，JSON `{quiz:"fruit", code}`。本页从未请求 `GET /get`，也不改去别的主机。不接 Mantle |
+| 重新测试 | 订单号再调一次 `POST /order/redeem`。旧码仍是清会话后，再提交上面的原路径 |
+| 查看上次 | 只读本机 `fruit_last_result`，不请求订单接口、不扣次 |
 
 ## 免责声明
 
@@ -43,7 +44,7 @@ https://zengpenghui420-glitch.github.io/fruit-fft/
 python3 -m http.server 8080
 ```
 
-浏览器打开 http://127.0.0.1:8080/ 。未解锁时点「开始测试」会要求验证码，题目不会进入作答屏；「查看上次结果」只在本机有过结果时出现，且只读本地缓存。
+浏览器打开 http://127.0.0.1:8080/ 。未解锁时点「开始测试」会要求订单号，题目不会进入作答屏；「查看上次结果」只在本机有过结果时出现，且只读本地缓存。
 
 ## GitHub Pages
 
